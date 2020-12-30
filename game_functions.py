@@ -5,6 +5,27 @@ from bullet import Bullet
 from alien import Alien
 
 
+def check_fleet_edges(ai_setting, aliens):
+    # 有外星人到边界时采取的措施
+    for alien in aliens.sprites():
+        if alien.check_edges():
+            change_fleet_direction(ai_setting, aliens)
+            break
+
+
+def change_fleet_direction(ai_settings, aliens):
+    # 将外星人下移，并改变他们的方向
+    for alien in aliens.sprites():
+        alien.rect.y += ai_settings.fleet_drop_speed
+    ai_settings.fleet_direction *= -1
+
+
+def update_aliens(ai_settings, aliens):
+    # 检查是否有外星人位于屏幕边缘，并更新外星人群的位置
+    check_fleet_edges(ai_settings, aliens)
+    aliens.update()
+
+
 def get_number_aliens_x(ai_settings, alien_width):
     # 计算可容纳多少外星人
     available_space_x = ai_settings.screen_width - 2 * alien_width
