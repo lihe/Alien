@@ -6,8 +6,7 @@ class GameStats:
         self.ai_settings = ai_settings
         self.reset_stats()
         # 游戏刚开始时的活动状态
-        self.game_active = True
-
+        self.game_active = False
 
     def reset_stats(self):
         # 初始化在游戏运行期间可能变化的统计信息
