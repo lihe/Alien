@@ -10,7 +10,7 @@ class Settings:
 
         # 飞船的设置
         self.ship_speed_factor = 1.5
-        self.ship_limit = 3
+        self.ship_limit = 1
 
         # 子弹的设置
         self.bullet_speed_factor = 3
@@ -28,6 +28,9 @@ class Settings:
         self.speedup_scale = 1.1
         self.initialize_dynamic_settings()
 
+        # 外星人点数的提高速度
+        self.score_scale = 1.5
+
     def initialize_dynamic_settings(self):
         # 初始化随游戏而变化的设置
         self.ship_speed_factor = 1.5
@@ -40,4 +43,7 @@ class Settings:
         self.ship_speed_factor *= self.speedup_scale
         self.bullets_speed_factor *= self.speedup_scale
         self.alien_speed_factor *= self.speedup_scale
+
+        self.alien_points = int(self.alien_points * self.score_scale)
+
 
